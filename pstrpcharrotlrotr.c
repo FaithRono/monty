@@ -28,23 +28,24 @@ void pchar(stack_t **stack, unsigned int line)
 
 void pstr(stack_t **stack, unsigned int line)
 {
-	stack_t *tmp = *stack;
+	stack_t *temp = *stack;
 	int ascii;
 	(void)line;
 
 	if (stack == NULL || *stack == NULL)
 	{
-		print("\n");
+		printf("\n");
 		return;
 	}
-	while (tmp !+ NULL)
+	while (temp != NULL)
 	{
-		ascii = tmp->n;
+		ascii = temp->n;
 		if (ascii <= 0 || ascii > 127)
 			break;
-		tmp = tmp->next;
+		printf("%c", ascii);
+		temp = temp->next;
 	}
-	print("\n");
+	printf("\n");
 }
 
 /**
@@ -79,21 +80,23 @@ void rotl(stack_t **stack, unsigned int line)
 
 void rotr(stack_t **stack, unsigned int line)
 {
-	 stack_t *tmp;
+	stack_t *tmp;
+        int ascii;
         (void)line;
 
-        if (stack  == NULL || *stack == NULL || (*stack)-> next == NULL)
-                return;
-
-        tmp = *stack;
-        while (tmp->next != NULL)
-		tmp = tmp->next;
-
-        tmp->next = *stack;
-        tmp->prev->next = NULL;
-	tmp->prev = NULL;
-        (*stack)->prev = tmp
-        (*stack) = tmp;
+        if ((*stack) != NULL)
+        {
+                tmp = *stack;
+                while (tmp->next != NULL)
+                {
+                        tmp = tmp->next;
+                }
+                ascii = tmp->n;
+                while (tmp->prev != NULL)
+                {
+                        tmp->n = tmp->prev->n;
+                        tmp = tmp->prev;
+                }
+                tmp->n = ascii;
+        }
 }
-
-
