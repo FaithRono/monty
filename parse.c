@@ -55,7 +55,7 @@ instruction_t *parse(char *line)
 		if (strcmp(instruction->opcode, "rotr") == 0)
 			instruction->f = rotr;
 		if (strcmp(instruction->opcode, "stack") == 0)
-			instruction->f = stack;
+			instruction->f = NULL;
 		if (strcmp(instruction->opcode, "queue") == 0)
 			instruction->f = queue;
 	}
