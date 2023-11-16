@@ -122,8 +122,6 @@ void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
 		node = newnode(atoi(opv) * flag);
 		if (rt_val == 0)
 			func(&node, line);
-		if (rt_val == 1)
-			queue(&node, line);
 	}
 	else
                 func(&head, line);
@@ -146,35 +144,4 @@ stack_t *newnode(int n)
 	node->prev = NULL;
 	node->n = n;
 	return (node);
-}
-
-/**
-*mod - modulo's top elem value from second to element val
-*@stack: address of pointer to firsr stack element
-*@line: line number
-*
-*/
-
-void mod(stack_t **stack, unsigned int line)
-{
-	int result = 0;
-
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", line);
-		exit(EXIT_FAILURE);
-	}
-
-	*stack = (*stack)->next;
-	if ((*stack)->prev->n != 0)
-		result = (*stack)->n % (*stack)->prev->n;
-	else
-	{
-		fprintf(stderr, "L%d: division by zero\n", line);
-		exit(EXIT_FAILURE);
-	}
-
-	(*stack)->n = result;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
 }

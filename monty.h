@@ -25,6 +25,7 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+extern stack_t *head;
 
 /**
  * struct instruction_s - opcoode and its function
@@ -63,8 +64,8 @@ void rotr(stack_t **stack, unsigned int line);
  void freenodes(void);
  void queue(stack_t **stack, unsigned int line);
 int line_parse(char *buf, int line);
-typedef void (*op_func);
 void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val);
+typedef void (*op_func)(stack_t **, unsigned int);
 void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val);
 stack_t *newnode(int n);
 void mod(stack_t **stack, unsigned int line);
