@@ -85,7 +85,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 
 /**
 *execute - executes an operation based on an opcode
-*@func: function to be executed
+*@index: function to be executed
 *@opc: operation code
 *@opv: operation argument
 *@line: line number in file
@@ -93,7 +93,7 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 *
 */
 
-void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
+void execute(op_func index, char *opc, char *opv, unsigned int line, int rt_val)
 {
 	stack_t *node;
 	int i, flag;
@@ -121,10 +121,10 @@ void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
 		}
 		node = newnode(atoi(opv) * flag);
 		if (rt_val == 0)
-			func(&node, line);
+			index(&node, line);
 	}
 	else
-                func(&head, line);
+                index(&head, line);
 }
 
 /**
