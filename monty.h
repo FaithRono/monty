@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <ctype.h>
 
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -62,10 +63,12 @@ void rotr(stack_t **stack, unsigned int line);
  void freenodes(void);
  void queue(stack_t **stack, unsigned int line);
 int line_parse(char *buf, int line);
+typedef void (*op_func);
 void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val);
 void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val);
 stack_t *newnode(int n);
 void mod(stack_t **stack, unsigned int line);
+void show_top(stack_t **stack, unsigned int line);
 
 
 #endif

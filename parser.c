@@ -49,12 +49,12 @@ void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val)
 	{"push", push},
 	{"pall", pall},
 	{"pint", show_top},
-	{"add", addition},
+	{"add", add},
 	{"swap", swap},
 	{"pop", pop},
 	{"nop", nop},
 	{"sub", sub},
-	{"div", divide},
+	{"div", division},
 	{"mul", mul},
 	{"mod", mod},
 	{"pchar", pchar},
@@ -123,10 +123,10 @@ void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val)
 		if (rt_val == 0)
 			func(&node, line);
 		if (rt_val == 1)
-			en_queue(&node, line);
+			queue(&node, line);
 	}
 	else
-		func(&head, line);
+                func(&head, line);
 }
 
 /**
