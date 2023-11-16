@@ -61,5 +61,11 @@ void rotl(stack_t **stack, unsigned int line);
 void rotr(stack_t **stack, unsigned int line);
  void freenodes(void);
  void queue(stack_t **stack, unsigned int line);
+int line_parse(char *buf, int line);
+void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val);
+void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val);
+stack_t *newnode(int n);
+void mod(stack_t **stack, unsigned int line);
+
 
 #endif
