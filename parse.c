@@ -9,14 +9,14 @@
 instruction_t *parse(char *line)
 {
 	char *opcode;
-	instruction_t *insruction;
+	instruction_t *instruction;
 
 	opcode = extract_opcode(line);
 
-	insruction = malloc(sizeof(*instruction));
+	instruction = malloc(sizeof(*instruction));
 	if (instruction == NULL)
 	{
-		fprintf(stdout, "ERROR: Malloc Failed\n")
+		fprintf(stdout, "ERROR: Malloc Failed\n");
 			exit(EXIT_FAILURE);
 	}
 	instruction->opcode = opcode;
@@ -41,11 +41,11 @@ instruction_t *parse(char *line)
 		if (strcmp(instruction->opcode, "sub") == 0)
 			instruction->f = sub;
 		if (strcmp(instruction->opcode, "div") == 0)
-			instruction->f = divide;
+			instruction->f = division;
 		if (strcmp(instruction->opcode, "mul") == 0)
-			instruction->f = multiply;
+			instruction->f = mul;
 		if (strcmp(instruction->opcode, "mod") == 0)
-			instruction->f = moddy;
+			instruction->f = mod;
 		if (strcmp(instruction->opcode, "pchar") == 0)
 			instruction->f = pchar;
 		if (strcmp(instruction->opcode, "pstr") == 0)
@@ -61,4 +61,4 @@ instruction_t *parse(char *line)
 	}
 
 	return (instruction);
-
+}

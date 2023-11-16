@@ -47,4 +47,15 @@ void pop(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line);
 void nop(stack_t **stack, unsigned int line);
 int main(int argc, char *argv[]);
+instruction_t *parse(char *line);
+char *extract_opcode(char *string);
+void add(stack_t **stack, unsigned int line);
+void sub(stack_t **stack, unsigned int line);
+void division(stack_t **stack, unsigned int line);
+void mul(stack_t **stack, unsigned int line);
+void mod(stack_t **stack, unsigned int line);
+void pchar(stack_t **stack, unsigned int line);
+void pstr(stack_t **stack, unsigned int line);
+void rotl(stack_t **stack, unsigned int line);
+void rotr(stack_t **stack, unsigned int line);
 #endif
