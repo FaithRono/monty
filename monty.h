@@ -21,9 +21,9 @@
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
 } stack_t;
 extern stack_t *head;
 
@@ -37,8 +37,8 @@ extern stack_t *head;
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 #define getline
@@ -65,12 +65,8 @@ void rotr(stack_t **stack, unsigned int line);
  void queue(stack_t **stack, unsigned int line);
 int line_parse(char *buf, int line);
 void opcode_mapping(char *opcode, char *opvalue, unsigned int line, int rt_val);
-<<<<<<< HEAD
-void execute(op_func index, char *opc, char *opv, unsigned int line, int rt_val);
-=======
 typedef void (*op_func)(stack_t **, unsigned int);
 void execute(op_func func, char *opc, char *opv, unsigned int line, int rt_val);
->>>>>>> 88a099065b2cec7612fdf98a4e1c5b60dba062c1
 stack_t *newnode(int n);
 void mod(stack_t **stack, unsigned int line);
 void show_top(stack_t **stack, unsigned int line);

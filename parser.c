@@ -121,7 +121,7 @@ void execute(op_func index, char *opc, char *opv, unsigned int line, int rt_val)
 		}
 		node = newnode(atoi(opv) * flag);
 		if (rt_val == 0)
-			func(&node, line);
+			index(&node, line);
 	}
 	else
                 index(&head, line);
