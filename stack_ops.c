@@ -31,16 +31,16 @@ void push(stack_t **node, __attribute__((unused))unsigned int line)
  */
 void pall(stack_t **stack, unsigned int line)
 {
-	stack_t *new;
+	stack_t *temp;
 
 	(void)line;
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
-	new = *stack;
-	while (new != NULL)
+	temp = *stack;
+	while (temp != NULL)
 	{
-		printf("%d\n", new->n);
-		new = new->next;
+		printf("%d\n", temp->n);
+		temp = temp->next;
 	}
 }
 /**
@@ -51,7 +51,7 @@ void pall(stack_t **stack, unsigned int line)
  */
 void pop(stack_t **stack, unsigned int line)
 {
-	stack_t *new;
+	stack_t *temp;
 
 	(void)line;
 
@@ -60,11 +60,11 @@ void pop(stack_t **stack, unsigned int line)
 		fprintf(stderr, "L%d: the stack is empty\n", line);
 		exit(EXIT_FAILURE);
 	}
-	new = *stack;
-	*stack = new->next;
+	temp = *stack;
+	*stack = temp->next;
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
-	free(new);
+	free(temp);
 }
 /**
  *swap - swaps the top two elements in the stack
@@ -79,7 +79,7 @@ void swap(stack_t **stack, unsigned int line)
 	(void)line;
 	if (*stack == NULL || stack ==  NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
+		fprintf(stdout, "L%d: can't swap, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 
@@ -118,11 +118,11 @@ void nop(stack_t **stack, unsigned int line)
  *
  * Return: void
  */
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line)
 {
 	if (*stack == NULL)
 	{
-		fprintf(stdout, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stdout, "L%d: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
